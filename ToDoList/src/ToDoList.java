@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ToDoList {
@@ -52,6 +53,33 @@ public class ToDoList {
 	    		e.printStackTrace();
 	    	}
 	}
+	
+	
+	
+	public void loadTasksFromDatabase() {
+        String sql = "SELECT * FROM tasks";			// The SQL Query we want to execute
+
+        try (
+        	 Connection connection = makeConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery();	// The 'executeQuery' method is used to execute the SELECT query.
+            ) {													// The result of this is stored in the resultSet object.
+        														// The resultSet object is a 'table' of the database's data.
+        	
+            while (resultSet.next()) {	 // This while loop iterates through the rows of the resultSet.Each row represents a Task.
+                int id = resultSet.getInt("id");
+                String description = resultSet.getString("task_description");
+                boolean isCompleted = resultSet.getBoolean("is_completed");
+
+                Task task = new Task(description, isCompleted);		// Creating new Task object for every setResult's row.
+                tasks.add(task);  // Add each task to the ArrayList
+
+                System.out.println("Loaded Task ID: " + id + ", Description: " + description + ", Completed: " + isCompleted);
+            }
+        } catch (SQLException e) {		// Handling errors that might occur while interacting with the database.
+            e.printStackTrace();
+        }
+    }
 	
 	
 }

@@ -8,6 +8,8 @@ public class Main {
 		Scanner scanner = new Scanner(System.in);
 		ToDoList list = new ToDoList();
 		
+		list.loadTasksFromDatabase();
+
 		
 		System.out.println("\nTo-Do List Menu:");
         System.out.println("\n1. Add Task");
