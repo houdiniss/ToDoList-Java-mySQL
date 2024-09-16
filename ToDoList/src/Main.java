@@ -31,7 +31,10 @@ public class Main {
         		list.addTask(description);
         		break;
         	case 2:
-        		System.out.println("You chose num 2.");
+        		System.out.println("You chose to remove a Task.");
+        		System.out.println("Please enter the id of the task and press Enter");
+        		int task_id = scanner.nextInt();
+        		list.removeTask(task_id);
         		break;
         	case 3:
         		System.out.println("You chose num 3.");

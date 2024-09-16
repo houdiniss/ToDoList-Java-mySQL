@@ -82,4 +82,28 @@ public class ToDoList {
     }
 	
 	
+	
+	public void removeTask(int task_id) {
+		String sql = "DELETE FROM tasks WHERE id = ?";
+		
+		try(Connection connection = makeConnection();
+			PreparedStatement statement = connection.prepareStatement(sql);) 
+		{
+			statement.setInt(1, task_id);
+			
+			int rowsAffected = statement.executeUpdate();
+			
+			if(rowsAffected > 0) {
+				System.out.println("Task removed from database. " + rowsAffected + " row(s) affected.");
+			} else {
+				System.out.println("Task was not removed from database. " + rowsAffected + " row(s) affected.Please try again...");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 }
