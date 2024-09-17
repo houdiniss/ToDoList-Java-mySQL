@@ -106,4 +106,28 @@ public class ToDoList {
 	
 	
 	
+	public void setCompletedState(boolean value, int task_id) {
+		String sql = "UPDATE tasks SET is_completed = ? WHERE id = ?";
+		
+		try(Connection connection = makeConnection();
+			PreparedStatement statement = connection.prepareStatement(sql);) {
+			
+			statement.setBoolean(1, value);
+			statement.setInt(2, task_id);
+			
+			int rowsAffected = statement.executeUpdate();	
+			
+			if(rowsAffected > 0) {
+				System.out.println("Task with an id of " + task_id + ", has now has a completed value of : " + value + "\n" + rowsAffected + " row(s) affected.");
+			} else {
+				System.out.println("Something went wrong.\n " + rowsAffected + " row(s) affected.Please try again...");
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
 }

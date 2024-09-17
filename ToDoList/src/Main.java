@@ -37,7 +37,11 @@ public class Main {
         		list.removeTask(task_id);
         		break;
         	case 3:
-        		System.out.println("You chose num 3.");
+        		System.out.println("Please enter the id of the task and press Enter");
+        		int id= scanner.nextInt();
+        		System.out.println("Please enter 'true' as completed or 'false' as not completed");
+        		boolean value = scanner.nextBoolean();
+        		list.setCompletedState(value, id);
         		break;
         	case 4:
         		System.out.println("You chose num 4.");
