@@ -130,4 +130,17 @@ public class ToDoList {
 	
 	
 	
+	public void viewTask() {
+		if(tasks.isEmpty()) {
+			System.out.println("There are no tasks registered...");
+		} else {
+			for(int i=0; i<tasks.size(); i++) {
+				System.out.println(tasks.get(i));
+			}
+		}
+		
+	}
+	
+	
+	
 }

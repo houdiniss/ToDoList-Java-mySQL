@@ -44,7 +44,7 @@ public class Main {
         		list.setCompletedState(value, id);
         		break;
         	case 4:
-        		System.out.println("You chose num 4.");
+        		list.viewTask();
         		break;
         	case 5:
         		System.out.println("You chose num 5.");
