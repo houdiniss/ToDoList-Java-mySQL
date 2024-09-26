@@ -47,7 +47,7 @@ public class Main {
         		list.viewTask();
         		break;
         	case 5:
-        		System.out.println("You chose num 5.");
+        		list.exitProgram();
         		break;
         	default:
         	System.out.println("You need to choose between 1-5..Restart and try again :D");

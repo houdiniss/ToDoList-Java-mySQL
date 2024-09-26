@@ -138,7 +138,12 @@ public class ToDoList {
 				System.out.println(tasks.get(i));
 			}
 		}
-		
+	}
+	
+	
+	
+	public void exitProgram() {
+		System.exit(0);
 	}
 	
 	
